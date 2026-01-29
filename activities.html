@@ -29,10 +29,10 @@
 
 <section>
   <h2>Conference Presentations</h2>
-  <p class="small">Chronological (old → new). Update by replacing <code>conferences.csv</code>.</p>
+  <p class="small">Reverse chronological (new → old). Update by replacing <code>conferences.csv</code>.</p>
 
   <div class="table-wrap">
-    <table id="confTable">
+    <table id="confTable" style="table-layout:auto;">
       <thead>
         <tr>
           <th style="width: 90px;">Year</th>
@@ -49,6 +49,47 @@
   </div>
 </section>
 
+<section>
+  <h2>Current PhD Projects (Pharmacometrics)</h2>
+  <ul>
+    <li><strong>Tuan Fauziah Tuan Roslli</strong> – High-dose methotrexate (HDMTX) population PK in lymphoma</li>
+    <li><strong>Toh Chin Chiang</strong> – Amikacin population PK in paediatric ICU (PICU)</li>
+    <li><strong>Farah Aida binti A. Zairol Azwan</strong> – Allopurinol and oxypurinol dose–response relationship</li>
+    <li><strong>Nazatul Adhwa binti Mohd Rozi</strong> – Piperacillin population PK in CRRT patients</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Other Student Projects (Clinical PK / Dosing)</h2>
+  <ul>
+    <li><strong>Ng Jia Wei</strong> – Dabigatran concentration variability in Malaysian population</li>
+    <li><strong>Christian Andrew Almalbis</strong> – Peak and trough concentrations of apixaban and rivaroxaban in clinical practice</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Collaborative Projects</h2>
+  <ul>
+    <li>Peg-asparaginase pharmacokinetics in ALL patients (University of Qatar)</li>
+    <li>Amikacin population PK in PICU (Ghent University, Belgium)</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Past Projects</h2>
+  <ul>
+    <li>Moxifloxacin and levofloxacin concentrations in ocular tissues</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Journal Club</h2>
+  <p>
+    RAPID runs regular journal club sessions focused on pharmacokinetics,
+    pharmacometrics, clinical pharmacology, and precision dosing.
+  </p>
+</section>
+
 <footer>
   Centre for Quality Management of Medicines, Faculty of Pharmacy UKM
 </footer>
@@ -57,13 +98,17 @@
 async function loadCSV(path) {
   const res = await fetch(path, { cache: "no-store" });
   const text = await res.text();
-  return text.trim().split(/\r?\n/).map(line => {
-    // Simple CSV split that handles quoted commas
+
+  // Split lines, skip empty lines
+  const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
+
+  return lines.map(line => {
+    // CSV split that handles quoted commas
     const out = [];
     let cur = "", inQ = false;
     for (let i = 0; i < line.length; i++) {
       const ch = line[i];
-      if (ch === '"' ) inQ = !inQ;
+      if (ch === '"') inQ = !inQ;
       else if (ch === ',' && !inQ) { out.push(cur); cur = ""; }
       else cur += ch;
     }
@@ -78,17 +123,17 @@ function badge(year) {
 
 (async () => {
   const rows = await loadCSV("conferences.csv");
-  const header = rows[0];
-  const data = rows.slice(1);
+  const data = rows.slice(1); // skip header
 
-  // Ensure chronological old -> new
-  data.sort((a,b) => Number(a[0]) - Number(b[0]));
+  // Sort: newest -> oldest (reverse chronology)
+  data.sort((a, b) => Number(b[0]) - Number(a[0]));
 
   const tbody = document.querySelector("#confTable tbody");
   tbody.innerHTML = "";
 
   for (const r of data) {
     const [Year, Presenter, Conference, Location, Title] = r;
+
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${badge(Year)}</td>
