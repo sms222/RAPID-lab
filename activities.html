@@ -28,75 +28,79 @@
 </header>
 
 <section>
-  <h2>Current PhD Projects (Pharmacometrics)</h2>
-  <ul>
-    <li><strong>Tuan Fauziah Tuan Roslli</strong> – High-dose methotrexate (HDMTX) population PK in lymphoma</li>
-    <li><strong>Toh Chin Chiang</strong> – Amikacin population PK in paediatric ICU (PICU)</li>
-    <li><strong>Farah Aida binti A. Zairol Azwan</strong> – Allopurinol and oxypurinol dose–response relationship</li>
-    <li><strong>Nazatul Adhwa binti Mohd Rozi</strong> – Piperacillin population PK in CRRT patients</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Other Student Projects (Clinical PK / Dosing)</h2>
-  <ul>
-    <li><strong>Ng Jia Wei</strong> – Dabigatran concentration variability in Malaysian population</li>
-    <li><strong>Christian Andrew Almalbis</strong> – Peak and trough concentrations of apixaban and rivaroxaban in clinical practice</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Collaborative Projects</h2>
-  <ul>
-    <li>Peg-asparaginase pharmacokinetics in ALL patients (University of Qatar)</li>
-    <li>Amikacin population PK in PICU (Ghent University, Belgium)</li>
-  </ul>
-</section>
-
-<section>
   <h2>Conference Presentations</h2>
-  <p><em>Selected presentations by RAPID members (chronological order).</em></p>
+  <p class="small">Chronological (old → new). Update by replacing <code>conferences.csv</code>.</p>
 
-  <ul>
-    <li>
-      <strong>2020</strong> – (Add title) – Conference name, country.
-    </li>
-    <li>
-      <strong>2021</strong> – (Add title) – Conference name, country.
-    </li>
-    <li>
-      <strong>2022</strong> – (Add title) – Conference name, country.
-    </li>
-    <li>
-      <strong>2023</strong> – (Add title) – Conference name, country.
-    </li>
-    <li>
-      <strong>2024</strong> – (Add title) – Conference name, country.
-    </li>
-    <li>
-      <strong>2025</strong> – (Add title) – Conference name, country.
-    </li>
-  </ul>
-</section>
-
-<section>
-  <h2>Past Projects</h2>
-  <ul>
-    <li>Moxifloxacin and levofloxacin concentrations in ocular tissues</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Journal Club</h2>
-  <p>
-    RAPID runs regular journal club sessions focused on pharmacokinetics,
-    pharmacometrics, clinical pharmacology, and precision dosing.
-  </p>
+  <div class="table-wrap">
+    <table id="confTable">
+      <thead>
+        <tr>
+          <th style="width: 90px;">Year</th>
+          <th style="width: 180px;">Presenter</th>
+          <th style="width: 260px;">Conference</th>
+          <th style="width: 190px;">Location</th>
+          <th>Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="5" class="small">Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <footer>
   Centre for Quality Management of Medicines, Faculty of Pharmacy UKM
 </footer>
+
+<script>
+async function loadCSV(path) {
+  const res = await fetch(path, { cache: "no-store" });
+  const text = await res.text();
+  return text.trim().split(/\r?\n/).map(line => {
+    // Simple CSV split that handles quoted commas
+    const out = [];
+    let cur = "", inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === '"' ) inQ = !inQ;
+      else if (ch === ',' && !inQ) { out.push(cur); cur = ""; }
+      else cur += ch;
+    }
+    out.push(cur);
+    return out.map(s => s.replace(/^"|"$/g, "").trim());
+  });
+}
+
+function badge(year) {
+  return `<span class="badge">${year}</span>`;
+}
+
+(async () => {
+  const rows = await loadCSV("conferences.csv");
+  const header = rows[0];
+  const data = rows.slice(1);
+
+  // Ensure chronological old -> new
+  data.sort((a,b) => Number(a[0]) - Number(b[0]));
+
+  const tbody = document.querySelector("#confTable tbody");
+  tbody.innerHTML = "";
+
+  for (const r of data) {
+    const [Year, Presenter, Conference, Location, Title] = r;
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${badge(Year)}</td>
+      <td>${Presenter}</td>
+      <td>${Conference}</td>
+      <td>${Location}</td>
+      <td>${Title}</td>
+    `;
+    tbody.appendChild(tr);
+  }
+})();
+</script>
 
 </body>
 </html>
