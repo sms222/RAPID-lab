@@ -27,20 +27,24 @@
   </nav>
 </header>
 
-<!-- Local styles to keep photos neat without touching style.css -->
+<!-- Local safety CSS to stop the “giant oval photo” bug -->
 <style>
-  .person-card { text-align:center; }
+  .cards { align-items: stretch; }
+  .person-card { text-align: center; overflow: hidden; }
   .profile-pic {
-    width: 1700px;
-    height: 170px;
+    width: 140px;
+    height: 140px;
     object-fit: cover;
     border-radius: 50%;
-    border: 1px solid #eee;
     display: block;
-    margin: 0 auto 12px auto;
+    margin: 6px auto 12px auto;
+    border: 2px solid rgba(0,0,0,0.06);
+    background: #fff;
   }
-  .link-clean { text-decoration: none; }
-  .link-clean:hover { text-decoration: underline; }
+  .person-card a { text-decoration: none; }
+  .person-card a:hover { text-decoration: underline; }
+  .small { line-height: 1.4; }
+  .table-wrap { overflow-x: auto; }
 </style>
 
 <section>
@@ -49,24 +53,20 @@
   <div class="cards">
 
     <div class="card person-card">
-      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxOTk5Mg==" target="_blank" class="link-clean">
+      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxOTk5Mg==" target="_blank">
         <img src="shamin.jpg" alt="Shamin Mohd Saffian" class="profile-pic">
+        <h3>Shamin Mohd Saffian</h3>
       </a>
-      <h3>Shamin Mohd Saffian</h3>
-      <p class="small">
-        Pharmacometrics • Clinical pharmacology • Thrombosis • Oncology • Antibiotics •Coagulation Assays
-      </p>
+      <p class="small">Pharmacometrics • Clinical pharmacology • Thrombosis • Oncology • Antibiotics • Coagulation assays</p>
       <p class="small">Click photo to view UKM profile</p>
     </div>
 
     <div class="card person-card">
-      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAyMTk5OQ==" target="_blank" class="link-clean">
+      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAyMTk5OQ==" target="_blank">
         <img src="asyikin.jpg" alt="Nor Asyikin Mohd Tahir" class="profile-pic">
+        <h3>Nor Asyikin Mohd Tahir</h3>
       </a>
-      <h3>Nor Asyikin Mohd Tahir</h3>
-      <p class="small">
-        Pharmacometrics • Pharmacogenetics • Antibiotics • Translational assay research
-      </p>
+      <p class="small">Pharmacometrics • Pharmacogenetics • Antibiotics • Translational assay research</p>
       <p class="small">Click photo to view UKM profile</p>
     </div>
 
@@ -84,29 +84,29 @@
 
     <div class="card">
       <h3>
-        <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMjc2OA==" target="_blank" class="link-clean">
+        <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMjc2OA==" target="_blank">
           Dr Noraida Mohamed Shah
         </a>
       </h3>
-      <p class="small"> Pediatrics, Cancer Management, Clinical Pharmacy Practice, Adherence</p>
+      <p class="small">Paediatrics • Cancer management • Clinical pharmacy practice • Adherence</p>
     </div>
 
     <div class="card">
       <h3>
-        <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMzc4Mw==" target="_blank" class="link-clean">
+        <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMzc4Mw==" target="_blank">
           Dr Adyani Md Redzuan
         </a>
       </h3>
-      <p class="small"> Clinical Pharmacy Practice, Adherence, Cardiovascular Pharmacotherapy</p>
+      <p class="small">Clinical pharmacy practice • Adherence • Cardiovascular pharmacotherapy</p>
     </div>
 
     <div class="card">
       <h3>
-        <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMDE4Mg==" target="_blank" class="link-clean">
+        <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMDE4Mg==" target="_blank">
           Prof. Dr Mohd Makmor Bakry
         </a>
       </h3>
-      <p class="small"> Clinical Pharmacy Practice, Adherence, Pharmacogenetics, Critical Care Pharmacotherapy</p>
+      <p class="small">Clinical pharmacy practice • Adherence • Pharmacogenetics • Critical care pharmacotherapy</p>
     </div>
 
   </div>
@@ -126,7 +126,7 @@
   <h2>Alumni & Supervised Students</h2>
   <p class="small">
     These projects reflect clinical and translational research supervised by RAPID members,
-    contributing to dose optimization research in Malaysia.
+    contributing to evidence-based pharmacotherapy in Malaysia.
   </p>
 
   <div class="table-wrap">
