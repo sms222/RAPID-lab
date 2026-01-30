@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>About RAPID</title>
+  <title>About - RAPID</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,79 +21,66 @@
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="people.html">People</a>
+    <a href="research.html">Research</a>
     <a href="activities.html">Activities</a>
     <a href="publications.html">Publications</a>
     <a href="collaborate.html">Collaborate</a>
+    <a href="contact.html">Contact</a>
   </nav>
 </header>
 
-<style>
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 40px;
-    align-items: start;
-  }
+<section>
+  <h2>Who we are</h2>
 
-  .about-logo {
-    width: 260px;
-    max-width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .group-photo {
-    width: 100%;
-    border-radius: 12px;
-  }
-
-  @media (max-width: 900px) {
-    .about-grid {
-      grid-template-columns: 1fr;
-    }
-    .about-logo {
-      margin: 0 auto 20px auto;
-      display: block;
-    }
-  }
-</style>
-
-<section class="container">
-
-  <!-- LOGO FIRST -->
-  <div style="text-align:center; margin-bottom:40px;">
-    <img src="logo.png" alt="RAPID logo" class="about-logo">
-  </div>
-
-  <div class="about-grid">
-
-    <!-- TEXT -->
+  <div class="two-col">
     <div>
-      <h2>Who we are</h2>
-
       <p>
-        RAPID is a collaborative research group based at the Centre for Quality
-        Management of Medicines, Faculty of Pharmacy, Universiti Kebangsaan Malaysia (UKM).
+        RAPID is a collaborative research group based at the Centre for Quality Management of Medicines,
+        Faculty of Pharmacy, Universiti Kebangsaan Malaysia (UKM).
       </p>
-
       <p>
-        We work with clinicians and researchers to improve dosing decisions using applied
-        pharmacokinetics, pharmacometrics, pharmacogenetics, and assay-linked translational research.
-      </p>
-
-      <p>
-        Our focus is on translating quantitative pharmacology into real-world clinical impact,
-        particularly in complex patient populations in Malaysia and the region.
+        We work with clinicians and researchers to improve dosing decisions using applied pharmacokinetics,
+        pharmacometrics, pharmacogenetics, and assay-linked translational research.
       </p>
     </div>
 
-    <!-- PHOTO -->
-    <div>
-      <h3>Group photo</h3>
-      <img src="group.jpg" alt="RAPID group photo" class="group-photo">
+    <div class="panel">
+      <p class="small" style="margin:0 0 10px 0;"><strong>Group photo</strong></p>
+      <img src="group.jpg" alt="RAPID group photo" class="responsive-img">
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>What we do</h2>
+  <div class="panel">
+    <img src="whatwedo.jpg" alt="RAPID infographic" class="responsive-img">
+    <p class="small" style="margin:10px 0 0 0;">
+      Upload your infographic as <code>whatwedo.jpg</code>.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>Where we are based</h2>
+
+  <div class="two-col">
+    <div class="panel">
+      <p style="margin:0;">
+        <strong>Centre for Quality Management of Medicines</strong><br>
+        Faculty of Pharmacy, Universiti Kebangsaan Malaysia (UKM)
+      </p>
     </div>
 
+    <div class="panel" style="padding:0;">
+      <iframe
+        class="map-embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Faculty%20of%20Pharmacy%20UKM&output=embed">
+      </iframe>
+    </div>
   </div>
-
 </section>
 
 <footer>
