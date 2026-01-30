@@ -8,7 +8,9 @@
 
 <header class="site-header">
   <div class="brand">
-    <img src="logo.png" alt="RAPID logo" class="logo">
+    <a href="index.html" class="brand-link">
+      <img src="logo.png" alt="RAPID logo" class="logo">
+    </a>
     <div class="brand-text">
       <h1>Publications</h1>
       <p>Selected peer-reviewed publications from RAPID members</p>
@@ -27,32 +29,58 @@
 
 <section>
   <h2>Selected publications</h2>
-  <p class="small">.
-  </p>
 
-  <div class="table-wrap" style="padding:14px;">
-    <label for="pubSearch" class="small"><strong>Search</strong> (author, drug, journal, keyword):</label><br>
-    <input id="pubSearch" type="text" placeholder="e.g., vancomycin, allopurinol, piperacillin, Pharmaco..."
-      style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #ddd; margin-top:8px;">
+  <div class="card">
+    <label><strong>Search</strong> (author, drug, journal, keyword):</label>
+    <input type="text" id="searchInput" placeholder="e.g., vancomycin, allopurinol, piperacillin, Pharmaco..." style="width:100%; padding:10px; margin-top:8px;">
   </div>
 
-  <div class="table-wrap" style="margin-top:14px;">
-    <table id="pubTable" style="table-layout:auto;">
-      <thead>
-        <tr>
-          <th style="width:90px;">Year</th>
-          <th style="width:150px;">Team</th>
-          <th style="width:110px;">Type</th>
-          <th>Title</th>
-          <th style="width:220px;">Journal</th>
-          <th style="width:110px;">Link</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td colspan="6" class="small">Loading…</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <table id="pubTable">
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Title</th>
+        <th>Journal</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2025</td>
+        <td>Personalizing immunosuppressive therapy: predictors of drug switches in Malaysian kidney transplant recipients</td>
+        <td>J Pharm Pharm Sci</td>
+        <td><a href="#" target="_blank">DOI</a></td>
+      </tr>
+
+      <tr>
+        <td>2024</td>
+        <td>Population pharmacokinetic model of intravenous immunoglobulin in patients treated for various immune system disorders</td>
+        <td>Clinical Therapeutics</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>2024</td>
+        <td>A systematic review of single nucleotide polymorphisms affecting allopurinol pharmacokinetics and serum uric acid level</td>
+        <td>Pharmacogenomics</td>
+        <td><a href="#" target="_blank">DOI</a></td>
+      </tr>
+
+      <tr>
+        <td>2024</td>
+        <td>Therapeutic drug monitoring-guided piperacillin dosing in critically ill patients undergoing continuous renal replacement therapy: a systematic review</td>
+        <td>J Antimicrob Chemother</td>
+        <td><a href="#" target="_blank">DOI</a></td>
+      </tr>
+
+      <tr>
+        <td>2024</td>
+        <td>Improved HPLC method with automated pre-column sample derivatisation for serum pegylated L-asparaginase activity measurement in paediatric ALL patients</td>
+        <td>J Pharm Biomed Anal</td>
+        <td><a href="#" target="_blank">DOI</a></td>
+      </tr>
+    </tbody>
+  </table>
 </section>
 
 <footer>
@@ -60,82 +88,18 @@
 </footer>
 
 <script>
-async function loadCSV(path) {
-  const res = await fetch(path, { cache: "no-store" });
-  const text = await res.text();
-  const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
+  // Simple client-side search
+  const searchInput = document.getElementById("searchInput");
+  const table = document.getElementById("pubTable");
+  const rows = table.getElementsByTagName("tr");
 
-  return lines.map(line => {
-    const out = [];
-    let cur = "", inQ = false;
-    for (let i = 0; i < line.length; i++) {
-      const ch = line[i];
-      if (ch === '"') inQ = !inQ;
-      else if (ch === ',' && !inQ) { out.push(cur); cur = ""; }
-      else cur += ch;
+  searchInput.addEventListener("keyup", function () {
+    const filter = searchInput.value.toLowerCase();
+    for (let i = 1; i < rows.length; i++) {
+      const rowText = rows[i].innerText.toLowerCase();
+      rows[i].style.display = rowText.includes(filter) ? "" : "none";
     }
-    out.push(cur);
-    return out.map(s => s.replace(/^"|"$/g, "").trim());
   });
-}
-
-function badge(year) {
-  return `<span class="badge">${year}</span>`;
-}
-
-function makeLinkCell(url) {
-  if (!url) return "";
-  return `<a href="${url}" target="_blank" rel="noopener">DOI</a>`;
-}
-
-let allRows = [];
-
-function render(rows) {
-  const tbody = document.querySelector("#pubTable tbody");
-  tbody.innerHTML = "";
-
-  for (const r of rows) {
-    const [Year, Team, Type, Title, Journal, Link] = r;
-
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${badge(Year)}</td>
-      <td>${Team}</td>
-      <td>${Type}</td>
-      <td>${Title}</td>
-      <td>${Journal}</td>
-      <td>${makeLinkCell(Link)}</td>
-    `;
-    tbody.appendChild(tr);
-  }
-
-  if (rows.length === 0) {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `<td colspan="6" class="small">No matches. Try another keyword.</td>`;
-    tbody.appendChild(tr);
-  }
-}
-
-function applyFilter() {
-  const q = document.getElementById("pubSearch").value.toLowerCase().trim();
-  if (!q) return render(allRows);
-
-  const filtered = allRows.filter(r => r.join(" ").toLowerCase().includes(q));
-  render(filtered);
-}
-
-(async () => {
-  const rows = await loadCSV("publications.csv");
-  const data = rows.slice(1).map(r => r.slice(0, 6)); // ignore Notes column for display
-
-  // Sort newest -> oldest
-  data.sort((a, b) => Number(b[0]) - Number(a[0]));
-
-  allRows = data;
-  render(allRows);
-
-  document.getElementById("pubSearch").addEventListener("input", applyFilter);
-})();
 </script>
 
 </body>
