@@ -193,3 +193,14 @@ footer {
   text-align: center;
   margin-top: 20px;
 }
+
+/* Safety: prevent images from overflowing cards */
+.card img { max-width: 100%; height: auto; }
+
+/* If you previously used .responsive-img, make it sane */
+.responsive-img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
