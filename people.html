@@ -27,32 +27,48 @@
   </nav>
 </header>
 
+<!-- Local styles to keep photos neat without touching style.css -->
+<style>
+  .person-card { text-align:center; }
+  .profile-pic {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+  .link-clean { text-decoration: none; }
+  .link-clean:hover { text-decoration: underline; }
+</style>
+
 <section>
   <h2>Core Researchers</h2>
 
   <div class="cards">
 
-    <!-- Shamin -->
-    <div class="card" style="text-align:center;">
-      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxOTk5Mg==" target="_blank">
-        <img src="shamin.jpg" alt="Shamin Mohd Saffian" class="responsive-img">
+    <div class="card person-card">
+      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxOTk5Mg==" target="_blank" class="link-clean">
+        <img src="shamin.jpg" alt="Shamin Mohd Saffian" class="profile-pic">
       </a>
       <h3>Shamin Mohd Saffian</h3>
       <p class="small">
         Pharmacometrics • Clinical pharmacology • Thrombosis • Oncology • Antibiotics
       </p>
-      </div>
+      <p class="small">Click photo to view UKM profile</p>
+    </div>
 
-    <!-- Nor Asyikin -->
-    <div class="card" style="text-align:center;">
-      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAyMTk5OQ==" target="_blank">
-        <img src="asyikin.jpg" alt="Nor Asyikin Mohd Tahir" class="responsive-img">
+    <div class="card person-card">
+      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAyMTk5OQ==" target="_blank" class="link-clean">
+        <img src="asyikin.jpg" alt="Nor Asyikin Mohd Tahir" class="profile-pic">
       </a>
       <h3>Nor Asyikin Mohd Tahir</h3>
       <p class="small">
         Pharmacometrics • Pharmacogenetics • Translational assay research
       </p>
-      </div>
+      <p class="small">Click photo to view UKM profile</p>
+    </div>
 
   </div>
 </section>
@@ -60,59 +76,91 @@
 <section>
   <h2>Affiliated Researchers</h2>
   <p class="small">
-    These researchers contribute to RAPID projects through collaborative work in
-    pharmacokinetics, pharmacometrics, pharmacogenetics, and translational research.
+    These researchers contribute to RAPID projects through collaborative work in pharmacokinetics,
+    pharmacometrics, pharmacogenetics, and translational research.
   </p>
 
   <div class="cards">
 
     <div class="card">
       <h3>
-        <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMjc2OA==" target="_blank">
-          Dr Noraida Mohamed Shah
+        <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMjc2OA==" target="_blank" class="link-clean">
+          Dr Noraida binti Mohamed Shah
         </a>
       </h3>
-      <p class="small"> Pediatrics, Cancer Management, Clinical Pharmacy Practice, Adherence, IVIG</p>
+      <p class="small">Immunoglobulin G pharmacokinetics</p>
     </div>
 
     <div class="card">
       <h3>
-        <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMzc4Mw==" target="_blank">
-          Dr Adyani Md Redzuan
+        <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMzc4Mw==" target="_blank" class="link-clean">
+          Dr Adyani binti Md Redzuan
         </a>
       </h3>
-      <p class="small"> Clinical Pharmacy Practice, Adherence, Cardiovascular Pharmacotherapy</p>
+      <p class="small">Digoxin population pharmacokinetics</p>
     </div>
 
     <div class="card">
       <h3>
-        <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMDE4Mg==" target="_blank">
-          Prof. Dr Mohd Makmor Bakry
+        <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMDE4Mg==" target="_blank" class="link-clean">
+          Prof. Dr Mohd bin Makmor Bakry
         </a>
       </h3>
-      <p class="small"> Clinical Pharmacy Practice, Adherence, Pharmacogenetics, Critical Care Pharmacotherapy</p>
+      <p class="small">ICU • Antibiotics PK • Pharmacogenetics</p>
     </div>
 
   </div>
 </section>
 
 <section>
-  <h2>PhD Candidates</h2>
+  <h2>Current Research Students</h2>
   <ul>
     <li><strong>Toh Chin Chiang</strong> – Amikacin population PK in PICU</li>
     <li><strong>Tuan Fauziah Tuan Roslli</strong> – HDMTX population PK in lymphoma</li>
-    <li><strong>Farah Aida A. Zairol Azwan</strong> – Allopurinol and oxypurinol PK/PD</li>
-    <li><strong>Nazatul Adhwa Mohd Rozi</strong> – Piperacillin population PK in CRRT</li>
+    <li><strong>Farah Aida binti A. Zairol Azwan</strong> – Allopurinol and oxypurinol PK/PD</li>
+    <li><strong>Nazatul Adhwa binti Mohd Rozi</strong> – Piperacillin population PK in CRRT</li>
   </ul>
 </section>
 
 <section>
-  <h2> Past Students</h2>
-  <ul>
-    <li><strong> 2020 - 2023  Ng Jia Wei</strong> – Dabigatran PK variability</li>
-    <li><strong> 2020 - 2023  Christian Andrew Almalbis</strong> – Apixaban and rivaroxaban concentrations</li>
-     <li><strong> 2018 - 2021  Lee Jian Lynn </strong> – IVIG Population PK</li>
-  </ul>
+  <h2>Alumni & Supervised Students</h2>
+  <p class="small">
+    These projects reflect clinical and translational research supervised by RAPID members,
+    contributing to evidence-based pharmacotherapy in Malaysia.
+  </p>
+
+  <div class="table-wrap">
+    <table style="table-layout:auto;">
+      <thead>
+        <tr>
+          <th style="width:90px;">Year</th>
+          <th style="width:240px;">Student</th>
+          <th>Title</th>
+          <th style="width:120px;">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge">2025</span></td>
+          <td>Fann Zi Yin</td>
+          <td>Treatment outcomes in methicillin-resistant <em>Staphylococcus aureus</em> bacteraemia patients receiving vancomycin: a retrospective study at a tertiary hospital</td>
+          <td><a href="https://doi.org/10.1136/ejhpharm-2025-004716" target="_blank">DOI</a></td>
+        </tr>
+        <tr>
+          <td><span class="badge">2024</span></td>
+          <td>Farah Waheeda Tajurudin</td>
+          <td>Analysis of direct oral anticoagulant (DOAC) prescriptions in atrial fibrillation patients two years post-discharge from DOAC clinic</td>
+          <td class="small">—</td>
+        </tr>
+        <tr>
+          <td><span class="badge">2021</span></td>
+          <td>Ahmad Salihin Abdullah</td>
+          <td>Bleeding and thromboembolic events in patients with non-valvular atrial fibrillation treated with apixaban or rivaroxaban in a single tertiary teaching hospital</td>
+          <td><a href="https://doi.org/10.21315/mjms2022.29.2.15" target="_blank">DOI</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <footer>
