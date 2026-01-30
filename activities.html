@@ -8,10 +8,12 @@
 
 <header class="site-header">
   <div class="brand">
-    <img src="logo.png" alt="RAPID logo" class="logo">
+    <a href="index.html" class="brand-link">
+      <img src="logo.png" alt="RAPID logo" class="logo">
+    </a>
     <div class="brand-text">
       <h1>Activities & Projects</h1>
-      <p>Ongoing research and academic activities</p>
+      <p>Research activities and ongoing work</p>
     </div>
   </div>
 
@@ -27,24 +29,31 @@
   </nav>
 </header>
 
+<!-- Journal Club FIRST -->
 <section>
-  <h2>Conference Presentations</h2>
+  <h2>Journal Club</h2>
 
-  <div class="table-wrap">
-    <table id="confTable" style="table-layout:auto;">
-      <thead>
-        <tr>
-          <th style="width: 90px;">Year</th>
-          <th style="width: 180px;">Presenter</th>
-          <th style="width: 260px;">Conference</th>
-          <th style="width: 190px;">Location</th>
-          <th>Title</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td colspan="5" class="small">Loading…</td></tr>
-      </tbody>
-    </table>
+  <div class="two-col">
+    <div>
+      <p>
+        RAPID runs a <strong>monthly journal club</strong> focused on pharmacokinetics,
+        pharmacometrics, clinical pharmacology, and precision dosing.
+      </p>
+      <p>
+        Sessions involve critical appraisal of recent papers, discussion of modelling methods,
+        and sharing of ongoing project ideas.
+      </p>
+      <p class="small">
+        Open to RAPID members and collaborators.
+      </p>
+    </div>
+
+    <div class="panel">
+      <img src="jc.jpg" alt="RAPID Journal Club" class="responsive-img">
+      <p class="small" style="margin:10px 0 0 0;">
+        Upload a photo as <code>jc.jpg</code>.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -75,18 +84,32 @@
 </section>
 
 <section>
-  <h2>Past Projects</h2>
-  <ul>
-    <li>Moxifloxacin and levofloxacin pharmacokinetics in ocular tissues</li>
-  </ul>
+  <h2>Conference Presentations</h2>
+  <p class="small">Reverse chronological (new → old). Auto-loaded from CSV.</p>
+
+  <div class="table-wrap">
+    <table id="confTable" style="table-layout:auto;">
+      <thead>
+        <tr>
+          <th style="width: 90px;">Year</th>
+          <th style="width: 180px;">Presenter</th>
+          <th style="width: 260px;">Conference</th>
+          <th style="width: 190px;">Location</th>
+          <th>Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="5" class="small">Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <section>
-  <h2>Journal Club</h2>
-  <p>
-    RAPID runs regular journal club sessions focused on pharmacokinetics,
-    pharmacometrics, clinical pharmacology, and precision dosing.
-  </p>
+  <h2>Past Projects</h2>
+  <ul>
+    <li>Moxifloxacin and levofloxacin concentrations in ocular tissues</li>
+  </ul>
 </section>
 
 <footer>
@@ -97,12 +120,9 @@
 async function loadCSV(path) {
   const res = await fetch(path, { cache: "no-store" });
   const text = await res.text();
-
-  // Split lines, skip empty lines
   const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
 
   return lines.map(line => {
-    // CSV split that handles quoted commas
     const out = [];
     let cur = "", inQ = false;
     for (let i = 0; i < line.length; i++) {
@@ -122,9 +142,9 @@ function badge(year) {
 
 (async () => {
   const rows = await loadCSV("conferences.csv");
-  const data = rows.slice(1); // skip header
+  const data = rows.slice(1);
 
-  // Sort: newest -> oldest (reverse chronology)
+  // newest → oldest
   data.sort((a, b) => Number(b[0]) - Number(a[0]));
 
   const tbody = document.querySelector("#confTable tbody");
@@ -132,7 +152,6 @@ function badge(year) {
 
   for (const r of data) {
     const [Year, Presenter, Conference, Location, Title] = r;
-
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${badge(Year)}</td>
