@@ -29,57 +29,21 @@
 
 <section>
   <h2>Selected publications</h2>
-
-  <div class="card">
-    <label><strong>Search</strong> (author, drug, journal, keyword):</label>
-    <input type="text" id="searchInput" placeholder="e.g., vancomycin, allopurinol, piperacillin, Pharmaco..." style="width:100%; padding:10px; margin-top:8px;">
-  </div>
+  <p>
+    Publications below reflect RAPID’s work in applied pharmacokinetics,
+    pharmacometrics, pharmacogenetics, and model-informed precision dosing.
+  </p>
 
   <table id="pubTable">
     <thead>
       <tr>
-        <th>Year</th>
+        <th style="width:80px;">Year</th>
         <th>Title</th>
-        <th>Journal</th>
-        <th>Link</th>
+        <th style="width:220px;">Journal</th>
+        <th style="width:100px;">Link</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>2025</td>
-        <td>Personalizing immunosuppressive therapy: predictors of drug switches in Malaysian kidney transplant recipients</td>
-        <td>J Pharm Pharm Sci</td>
-        <td><a href="#" target="_blank">DOI</a></td>
-      </tr>
-
-      <tr>
-        <td>2024</td>
-        <td>Population pharmacokinetic model of intravenous immunoglobulin in patients treated for various immune system disorders</td>
-        <td>Clinical Therapeutics</td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>2024</td>
-        <td>A systematic review of single nucleotide polymorphisms affecting allopurinol pharmacokinetics and serum uric acid level</td>
-        <td>Pharmacogenomics</td>
-        <td><a href="#" target="_blank">DOI</a></td>
-      </tr>
-
-      <tr>
-        <td>2024</td>
-        <td>Therapeutic drug monitoring-guided piperacillin dosing in critically ill patients undergoing continuous renal replacement therapy: a systematic review</td>
-        <td>J Antimicrob Chemother</td>
-        <td><a href="#" target="_blank">DOI</a></td>
-      </tr>
-
-      <tr>
-        <td>2024</td>
-        <td>Improved HPLC method with automated pre-column sample derivatisation for serum pegylated L-asparaginase activity measurement in paediatric ALL patients</td>
-        <td>J Pharm Biomed Anal</td>
-        <td><a href="#" target="_blank">DOI</a></td>
-      </tr>
-    </tbody>
+    <tbody></tbody>
   </table>
 </section>
 
@@ -88,17 +52,23 @@
 </footer>
 
 <script>
-  // Simple client-side search
-  const searchInput = document.getElementById("searchInput");
-  const table = document.getElementById("pubTable");
-  const rows = table.getElementsByTagName("tr");
+fetch("publications.csv")
+  .then(res => res.text())
+  .then(text => {
+    const rows = text.trim().split("\n").slice(1);
+    const tbody = document.querySelector("#pubTable tbody");
 
-  searchInput.addEventListener("keyup", function () {
-    const filter = searchInput.value.toLowerCase();
-    for (let i = 1; i < rows.length; i++) {
-      const rowText = rows[i].innerText.toLowerCase();
-      rows[i].style.display = rowText.includes(filter) ? "" : "none";
-    }
+    rows.forEach(r => {
+      const [year,title,journal,link] = r.split(",");
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${year}</td>
+        <td>${title}</td>
+        <td>${journal}</td>
+        <td>${link ? `<a href="${link}" target="_blank">DOI</a>` : ""}</td>
+      `;
+      tbody.appendChild(tr);
+    });
   });
 </script>
 
