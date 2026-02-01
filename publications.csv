@@ -1,15 +1,24 @@
-Year,Lead/Team,Type,Title,Journal,DOI/Link,Notes
-2025,Nor Asyikin,Journal,"Personalizing immunosuppressive therapy: predictors of drug switches in Malaysian kidney transplant recipients","J Pharm Pharm Sci","https://doi.org/10.3389/jpps.2025.14632","PGx/clinical PK"
-2024,Shamin+Team,Journal,"Population pharmacokinetic model of intravenous immunoglobulin in patients treated for various immune system disorders","Clinical Therapeutics","", "Accepted 13 Sep 2024; PopPK"
-2024,Nor Asyikin+Team,Journal,"A systematic review of single nucleotide polymorphisms affecting allopurinol pharmacokinetics and serum uric acid level","Pharmacogenomics","https://doi.org/10.1080/14622416.2024.2403969","PGx; Allopurinol/Oxypurinol"
-2024,Shamin+Nor Asyikin+Team,Journal,"Therapeutic drug monitoring-guided piperacillin dosing in critically ill patients undergoing continuous renal replacement therapy: a systematic review","J Antimicrob Chemother","https://doi.org/10.1093/jac/dkae332","ICU; CRRT; Antibiotics"
-2024,Shamin+Team,Journal,"Improved HPLC method with automated pre-column sample derivatisation for serum pegylated L-asparaginase activity measurement in paediatric ALL patients","J Pharm Biomed Anal","https://doi.org/10.1016/j.jpba.2024.116243","Assay; Peg-asparaginase"
-2024,Nor Asyikin+Team,Journal,"The Impact of ABCC2 -24C>T Gene Polymorphism on Graft Survival in Kidney Transplant Recipients","Journal of Personalized Medicine","https://doi.org/10.3390/jpm14040440","PGx; transplant outcomes"
-2023,Shamin+Team,Journal,"Mortality outcomes and predictors of failed thrombolysis following STEMI thrombolysis in a non-PCI capable tertiary hospital: a 5-year analysis","Internal and Emergency Medicine","https://doi.org/10.1007/s11739-023-03202-1","Clinical outcomes"
-2022,Shamin+Nor Asyikin+Team,Journal,"Vitamin D insufficiency is high in Malaysia: A systematic review and meta-analysis of studies on vitamin D status in Malaysia","Frontiers in Nutrition","https://doi.org/10.3389/fnut.2022.1050745","Systematic review"
-2022,Shamin+Nor Asyikin+Team,Journal,"A systematic review and meta-analysis of dabigatran peak and trough concentration in adults","British Journal of Clinical Pharmacology","https://doi.org/10.1111/BCP.15431","TDM/PK variability"
-2021,Shamin+Team,Journal,"Population pharmacokinetic modelling of intravenous immunoglobulin in patients with predominantly antibody deficiencies","British Journal of Clinical Pharmacology","", "PopPK; IVIG"
-2020,Nor Asyikin+Shamin+Team,Journal,"A meta-analysis on the performance of cystatin C- versus creatinine-based eGFR equations in predicting vancomycin clearance","Journal of Korean Medical Science","https://doi.org/10.3346/JKMS.2020.35.E306","Vancomycin; kidney function"
-2020,Nor Asyikin+Shamin+Team,Journal,"Effects of CST3 Gene G73A polymorphism on cystatin C in a prospective multiethnic cohort study","Nephron","https://doi.org/10.1159/000505296","PGx; cystatin C"
-2017,Shamin,Journal,"Warfarin dosing algorithms underpredict dose requirements in patients requiring ≥7 mg daily: A systematic review and meta-analysis","Clinical Pharmacology & Therapeutics","", "Anticoagulants; dosing algorithms"
-2015,Shamin,Journal,"Quantification of dabigatran and indirect quantification of dabigatran acylglucuronides in human plasma by LC-MS/MS","Bioanalysis","", "Assay; DOACs"
+Year,Title,Journal,Link
+2025,Peak and trough concentrations of apixaban and rivaroxaban in adult patients: a systematic review and meta-analysis,J Thromb Haemost,https://doi.org/10.1016/j.jtha.2024.12.032
+2024,Population pharmacokinetic model of intravenous immunoglobulin in patients treated for various immune system disorders,Clinical Therapeutics,
+2024,A systematic review of single nucleotide polymorphisms affecting allopurinol pharmacokinetics and serum uric acid level,Pharmacogenomics,
+2024,Therapeutic drug monitoring-guided piperacillin dosing in critically ill patients undergoing continuous renal replacement therapy: a systematic review,J Antimicrob Chemother,
+2024,Improved HPLC method with automated pre-column sample derivatisation for serum pegylated L-asparaginase activity measurement in paediatric ALL patients,J Pharm Biomed Anal,
+2023,A comparison of the incidence rate for joint bleeding and FVIII consumption between on-demand versus prophylaxis therapy in severe haemophilia A patients,Malays J Med Sci,
+2023,The peak and trough concentrations of dabigatran in adult patients,Med & Health,
+2022,A systematic review and meta-analysis of dabigatran peak and trough concentration in adults,Br J Clin Pharmacol,
+2022,Adverse drug reactions of antihypertensives and CYP3A5*3 polymorphism among CKD patients,Frontiers in Pharmacology,
+2022,Outcomes of streptokinase versus tenecteplase in STEMI: a propensity matched analysis,Int J Clin Pharm,
+2022,International adult guideline for making clozapine titration safer,Pharmacopsychiatry,
+2022,Bleeding and thromboembolic events in non-valvular AF treated with apixaban or rivaroxaban,Malays J Med Sci,https://doi.org/10.21315/mjms2022.29.2.15
+2021,Population pharmacokinetic modelling of intravenous immunoglobulin in patients with predominantly antibody deficiencies,Br J Clin Pharmacol,
+2021,A systematic review of population PK analyses of polyclonal immunoglobulin G therapy,Int Immunopharmacol,
+2021,Effects of CYP3A5 polymorphism on rapid progression of chronic kidney disease,J Pers Med,
+2020,Effects of CST3 gene polymorphism on cystatin C,Nephron,
+2020,Cystatin C versus creatinine eGFR equations in predicting vancomycin clearance,J Korean Med Sci,
+2020,Impact of increasing IgG trough level on infection rates in primary immunodeficiency,J Clin Immunol,
+2018,Agreement between creatinine and cystatin C-based equations in renal impairment,Indian Journal of Pharmaceutical Education and Research,
+2017,Warfarin dosing algorithms underpredict dose requirements in patients requiring ≥7 mg daily,Clin Pharmacol Ther,
+2016,Influence of genotype on warfarin maintenance dose predictions,Ther Drug Monitoring,
+2015,Methods for predicting warfarin dose requirements,Ther Drug Monitoring,
+2015,Quantification of dabigatran and metabolites by LC-MS/MS,Bioanalysis
