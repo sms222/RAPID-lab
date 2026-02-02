@@ -7,13 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 
   <style>
-    /* Page-specific (kept here so you don't need to edit other files) */
-    .page-wrap{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 28px 18px 56px;
-    }
-
+    /* Page-specific only (safe) */
     .section-title{
       font-size: 28px;
       margin: 18px 0 8px;
@@ -47,35 +41,8 @@
     }
 
     .person-card{
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
       padding: 18px 16px 16px;
       text-align: center;
-      border: 1px solid rgba(0,0,0,0.06);
-    }
-
-    .avatar{
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 6px auto 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f3f3f3;
-      border: 8px solid rgba(0,0,0,0.04);
-    }
-
-    .avatar img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      /* default center */
-      object-position: var(--pos, 50% 50%);
-      display: block;
-      border-radius: 50%;
     }
 
     .name{
@@ -93,12 +60,6 @@
       font-size: 13px;
       line-height: 1.45;
       color: #222;
-    }
-
-    .tiny-note{
-      margin-top: 8px;
-      font-size: 12px;
-      color: #555;
     }
 
     .list-block{
@@ -122,9 +83,7 @@
       line-height: 1.6;
     }
 
-    .list-block li{
-      margin: 6px 0;
-    }
+    .list-block li{ margin: 6px 0; }
 
     .doi a, .link a{
       color: #0b57d0;
@@ -134,7 +93,6 @@
 </head>
 
 <body>
-  <!-- Header / Nav (match your current site structure) -->
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
@@ -158,15 +116,12 @@
 
   <main class="page-wrap">
 
-    <!-- Core Researchers -->
     <h2 class="section-title" style="text-align:center;">Core Researchers</h2>
 
     <div class="cards-grid">
-      <!-- Shamin -->
-      <div class="person-card">
+      <div class="person-card person-card">
         <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxOTk5Mg==" target="_blank" rel="noopener">
           <div class="avatar" title="Open UKM profile">
-            <!-- tweak position if needed: style="--pos: 50% 45%;" -->
             <img src="shamin.jpg" alt="Dr Shamin Mohd Saffian" style="--pos: 50% 50%;" />
           </div>
         </a>
@@ -174,12 +129,11 @@
         <p class="tags">Pharmacometrics • Clinical pharmacology • Thrombosis • Oncology • Antibiotics • Coagulation assays</p>
       </div>
 
-      <!-- Nor Asyikin -->
       <div class="person-card">
         <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAyMTk5OQ==" target="_blank" rel="noopener">
           <div class="avatar" title="Open UKM profile">
-            <!-- This is the fix: move focus slightly DOWN so head stays centred -->
-            <img src="asyikin.jpg" alt="Dr Nor Asyikin Mohd Tahir" style="--pos: 50% 35%;" />
+            <!-- Nudge DOWN: lower number = higher crop; higher number = show more forehead -->
+            <img src="asyikin.jpg" alt="Dr Nor Asyikin Mohd Tahir" style="--pos: 50% 42%;" />
           </div>
         </a>
         <div class="name">Dr Nor Asyikin Mohd Tahir</div>
@@ -187,14 +141,12 @@
       </div>
     </div>
 
-    <!-- Affiliated Researchers -->
     <h2 class="section-title" style="text-align:center;">Affiliated Researchers</h2>
     <p class="section-sub" style="text-align:center;">
       These researchers contribute to RAPID projects through collaborative work in pharmacokinetics, pharmacometrics, pharmacogenetics, and translational research.
     </p>
 
     <div class="cards-grid affiliated">
-      <!-- Noraida -->
       <div class="person-card">
         <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMjc2OA==" target="_blank" rel="noopener">
           <div class="avatar">
@@ -205,34 +157,30 @@
         <p class="tags">Immunoglobulin G PK • Clinical pharmacy practice • Adherence</p>
       </div>
 
-      <!-- Adyani -->
       <div class="person-card">
         <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMzc4Mw==" target="_blank" rel="noopener">
           <div class="avatar">
-            <!-- Your image is cropped high — this nudges down more -->
-            <img src="adyani.jpg" alt="Dr Adyani Md Redzuan" style="--pos: 50% 30%;" />
+            <img src="adyani.jpg" alt="Dr Adyani Md Redzuan" style="--pos: 50% 45%;" />
           </div>
         </a>
         <div class="name" style="font-size:16px;">Dr Adyani Md Redzuan</div>
         <p class="tags">Digoxin PopPK • Cardiovascular pharmacotherapy • Adherence</p>
       </div>
 
-      <!-- Makmor -->
       <div class="person-card">
         <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMDE4Mg==" target="_blank" rel="noopener">
           <div class="avatar">
-            <img src="makmor.jpg" alt="Prof. Dr Mohd Makmor Bakry" style="--pos: 50% 45%;" />
+            <img src="makmor.jpg" alt="Prof. Dr Mohd Makmor Bakry" style="--pos: 50% 48%;" />
           </div>
         </a>
         <div class="name" style="font-size:16px;">Prof. Dr Mohd Makmor Bakry</div>
         <p class="tags">ICU • Antibiotics PK • Pharmacogenetics • Critical care pharmacotherapy</p>
       </div>
 
-      <!-- Farida -->
       <div class="person-card">
         <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxNzA3Nw==" target="_blank" rel="noopener">
           <div class="avatar">
-            <img src="farida.jpg" alt="Dr Farida Hanim binti Islahudin" style="--pos: 50% 45%;" />
+            <img src="farida.jpg" alt="Dr Farida Hanim binti Islahudin" style="--pos: 50% 50%;" />
           </div>
         </a>
         <div class="name" style="font-size:16px;">Dr Farida Hanim Islahudin</div>
@@ -240,7 +188,6 @@
       </div>
     </div>
 
-    <!-- Current Research Students -->
     <div class="list-block">
       <h3>Current Research Students</h3>
       <ul>
@@ -251,28 +198,26 @@
       </ul>
     </div>
 
-    <!-- Past Students -->
     <div class="list-block">
       <h3>Past Students</h3>
       <ul>
-        <li><strong>Master — Christian Andrew Almalbis (2025)</strong> — APIXABAN AND RIVAROXABAN THERAPY: Evaluation of risk scores, development of bleeding risk assessment tool and drug concentration review</li>
+        <li><strong>Master — Christian Andrew Almalbis (2025)</strong> — Apixaban and rivaroxaban therapy: evaluation of risk scores, development of bleeding risk assessment tool and drug concentration review</li>
         <li><strong>Master — Ng Jia Wei (2024)</strong> — Safety, efficacy and variability of dabigatran therapy</li>
         <li><strong>PhD — Lee Jian Lynn (2022)</strong> — Evaluation of immunoglobulin therapy and population pharmacokinetic model development</li>
       </ul>
     </div>
 
-    <!-- Supervised Work -->
     <div class="list-block">
       <h3>Supervised Work</h3>
       <p class="section-sub" style="margin:0 0 10px;">
-        Student projects supervised by RAPID members related to pharmacokinetics and dose individualisation.
+        Student projects supervised related to pharmacokinetics and dose individualisation.
       </p>
       <ul>
         <li>
-          <strong>Fann Zi Yin (2025)</strong> — Treatment outcomes in MRSA bacteraemia patients receiving vancomycin:
-          <span class="doi"><a href="https://doi.org/10.1136/ejhpharm-2025-004716" target="_blank" rel="noopener">DOI: 10.1136/ejhpharm-2025-004716</a></span>
+          <strong>Fann Zi Yin (2025)</strong> — Treatment outcomes in MRSA bacteraemia receiving vancomycin:
+          <span class="doi"><a href="https://doi.org/10.1136/ejhpharm-2025-004716" target="_blank" rel="noopener">10.1136/ejhpharm-2025-004716</a></span>
         </li>
-        <li><strong>Farah Waheeda Tajurudin (2024)</strong> — Analysis of direct oral anticoagulant (DOAC) prescriptions in atrial fibrillation patients two years post-discharge from DOAC clinic</li>
+        <li><strong>Farah Waheeda Tajurudin (2024)</strong> — Analysis of DOAC prescriptions in AF patients two years post-discharge from DOAC clinic</li>
         <li>
           <strong>Ahmad Salihin Abdullah (2021)</strong> — Bleeding and thromboembolic events in NVAF treated with apixaban or rivaroxaban:
           <span class="link"><a href="https://doi.org/10.21315/mjms2022.29.2.15" target="_blank" rel="noopener">https://doi.org/10.21315/mjms2022.29.2.15</a></span>
