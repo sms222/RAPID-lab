@@ -1,206 +1,161 @@
-/* Clean, modern default font */
-body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  margin: 0;
-  background: #fafafa;
-  color: #111;
+/* =========================
+   RAPID - Global site styles
+   ========================= */
+
+:root{
+  --rapid-maroon: #8b0f1a;
+  --rapid-maroon-dark: #6f0b13;
+  --text: #111;
+  --muted: #444;
+  --bg: #ffffff;
+  --card: #ffffff;
+  --shadow: 0 10px 28px rgba(0,0,0,0.08);
+  --border: 1px solid rgba(0,0,0,0.06);
+  --radius: 16px;
+  --maxw: 1100px;
+  --link: #0b57d0;
+  --font: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+*{ box-sizing: border-box; }
+html, body{ margin:0; padding:0; }
+body{
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
   line-height: 1.5;
 }
 
-.site-header {
-  background: #8A0F1A;
-  color: white;
-  padding: 14px 20px;
+/* ===== Header / Nav (fixed) ===== */
+.site-header{
+  background: var(--rapid-maroon);
+  color: #fff;
 }
 
-.brand {
+.header-inner{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 14px 18px;
   display: flex;
   align-items: center;
-  gap: 14px;
-}
-
-.brand-link { display: inline-block; }
-
-.logo {
-  height: 54px;
-  width: auto;
-  background: white;
-  border-radius: 8px;
-  padding: 4px;
-}
-
-.brand-text h1 {
-  margin: 0;
-  font-size: 26px;
-  letter-spacing: 0.2px;
-}
-
-.brand-text p {
-  margin: 4px 0 0 0;
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-.nav {
-  margin-top: 10px;
-  display: flex;
+  gap: 18px;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px 14px;
 }
 
-.nav a {
-  color: white;
+/* Brand left */
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 260px;
+}
+
+.brand-logo{
+  width: 46px;           /* <-- IMPORTANT: small logo */
+  height: 46px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+
+.brand-text{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-title{
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 0.3px;
+}
+
+.brand-tagline{
+  font-size: 12px;
+  opacity: 0.95;
+}
+
+/* Nav right */
+.nav{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nav a{
+  color: #fff;
   text-decoration: none;
   font-weight: 700;
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: 10px;
 }
 
-.nav a:hover { text-decoration: underline; }
+.nav a:hover{
+  background: rgba(255,255,255,0.12);
+}
 
-/* Wider container */
-section {
-  padding: 28px 18px;
-  max-width: 1280px;
+.nav a.active{
+  background: rgba(255,255,255,0.20);
+}
+
+/* ===== Main wrapper helper ===== */
+.page-wrap{
+  max-width: var(--maxw);
   margin: 0 auto;
+  padding: 28px 18px 56px;
 }
 
-.small { opacity: 0.85; font-size: 13px; }
+/* ===== Footer ===== */
+.site-footer{
+  margin-top: 30px;
+  background: #111;
+  color: #fff;
+}
 
-/* Panels */
-.panel {
-  background: white;
-  border: 1px solid #eee;
-  border-radius: 14px;
+.footer-inner{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 16px 18px;
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.95;
+}
+
+/* ===== People page helpers (global-safe) ===== */
+.person-card{
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: var(--border);
+}
+
+.avatar{
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  padding: 16px;
+  margin: 6px auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f3f3;
+  border: 8px solid rgba(0,0,0,0.04);
 }
 
-/* GRID: force 3 columns on desktop */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 16px;
-}
-
-/* Card styling */
-.card {
-  background: white;
-  border-radius: 16px;
-  padding: 18px;
-  border: 1px solid #eee;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  text-align: left;
-}
-
-.card h3 {
-  margin: 10px 0 6px 0;
-  color: #8A0F1A;
-  font-size: 18px;
-}
-
-.card p { margin: 0; }
-
-.icon {
-  font-size: 34px;
-  line-height: 1;
-}
-
-/* Hero */
-.hero {
-  padding-top: 34px;
-  padding-bottom: 18px;
-}
-
-.hero h2 {
-  margin: 0;
-  font-size: 30px;
-  text-align: center;
-}
-
-.hero p {
-  text-align: center;
-  max-width: 920px;
-  margin: 10px auto 0 auto;
-}
-
-/* Two-col layout used in other pages */
-.two-col {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 16px;
-  align-items: start;
-}
-
-@media (max-width: 1000px) {
-  .cards { grid-template-columns: 1fr; } /* stack on mobile/tablet */
-  .two-col { grid-template-columns: 1fr; }
-  .brand-text h1 { font-size: 22px; }
-}
-
-/* Images */
-.responsive-img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  border: 1px solid #eee;
+/* Force centering + circle crop ALWAYS */
+.avatar img{
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  object-position: var(--pos, 50% 50%) !important;
   display: block;
 }
 
-/* Table / badge styles kept */
-.table-wrap {
-  margin-top: 14px;
-  background: white;
-  border: 1px solid #eee;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-}
-
-table { width: 100%; border-collapse: collapse; }
-
-thead th {
-  background: #8A0F1A;
-  color: white;
-  text-align: left;
-  padding: 12px 14px;
-  font-size: 14px;
-}
-
-tbody td {
-  padding: 12px 14px;
-  border-top: 1px solid #f0f0f0;
-  font-size: 14px;
-}
-
-tbody tr:nth-child(even) { background: #fcfcfc; }
-
-.badge {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(138, 15, 26, 0.10);
-  color: #8A0F1A;
-  font-weight: 800;
-  font-size: 12px;
-}
-
-/* Footer */
-footer {
-  background: #111;
-  color: white;
-  padding: 15px;
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* Safety: prevent images from overflowing cards */
-.card img { max-width: 100%; height: auto; }
-
-/* If you previously used .responsive-img, make it sane */
-.responsive-img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
-}
+/* Generic links */
+a{ color: var(--link); }
