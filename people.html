@@ -42,10 +42,13 @@
       height: 140px;
       margin: 0 auto 10px auto;
       border-radius: 50%;
-      overflow: hidden; /* This cuts the circle */
+      overflow: hidden;
       border: 6px solid #f3f3f3;
-      background: #f6f6f6; /* Grey background behind the photo */
-      display: flex;        /* Ensures image centers perfectly */
+      
+      /* FIX 1: White background blends with the photos */
+      background: #ffffff; 
+      
+      display: flex;
       align-items: center;
       justify-content: center;
     }
@@ -55,29 +58,30 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.2s; /* Smooth visual check */
     }
 
-    /* --- THE FIX: ZOOM OUT --- */
-    /* Since the photos are tight/square, we scale them down (0.85 = 85% size) 
-       to create breathing room so heads aren't cut off. */
+    /* --- IMAGE FIXES --- */
 
-    /* 1) Nor Asyikin */
+    /* 1) Dr Nor Asyikin */
     .pos-asyikin { 
-        transform: scale(0.85); 
-        border-radius: 50%; /* Ensures the image itself is round */
+      object-position: center 10%; /* Focus near top */
+      transform: scale(0.90);      /* Zoom out slightly */
+      border-radius: 50%;          /* FIX 2: Keeps image round when shrunk */
     }
 
-    /* 2) Noraida - Needs the most help */
+    /* 2) Dr Noraida */
     .pos-noraida { 
-        transform: scale(0.80); 
-        border-radius: 50%;
+      object-position: center 15%; 
+      transform: scale(0.88);      /* Zoom out more to create headroom */
+      border-radius: 50%;          /* FIX 2: Keeps image round when shrunk */
     }
 
-    /* 3) Mohd Makmor */
+    /* 3) Prof Mohd Makmor */
+    /* We do NOT zoom him out because of the blue background. 
+       We align to TOP to maximize headroom. */
     .pos-makmor { 
-        transform: scale(0.85); 
-        border-radius: 50%;
+      object-position: center top; 
+      transform: scale(1.0);       
     }
 
     /* Names */
