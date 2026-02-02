@@ -1,89 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Our People | RAPID</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>People | RAPID</title>
 
 <style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  background: #fafafa;
-  color: #222;
-}
+  :root{
+    --rapid-red:#8b0f1a;
+    --card-bg:#ffffff;
+    --page-bg:#fafafa;
+    --text:#222;
+  }
 
-header {
-  background: #8b0f1a;
-  color: white;
-  padding: 14px 30px;
-}
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    background:var(--page-bg);
+    color:var(--text);
+  }
 
-header nav a {
-  color: white;
-  margin-right: 18px;
-  text-decoration: none;
-  font-weight: bold;
-}
+  header{
+    background:var(--rapid-red);
+    color:#fff;
+    padding:14px 30px;
+  }
 
-section {
-  max-width: 1100px;
-  margin: 50px auto;
-  padding: 0 20px;
-}
+  header nav a{
+    color:#fff;
+    margin-right:18px;
+    text-decoration:none;
+    font-weight:bold;
+  }
 
-h2 {
-  text-align: center;
-  margin-bottom: 30px;
-}
+  section{
+    max-width:1100px;
+    margin:48px auto;
+    padding:0 18px;
+  }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 30px;
-}
+  h2{
+    text-align:center;
+    margin:0 0 26px 0;
+  }
 
-.card {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-}
+  .subtext{
+    max-width:900px;
+    margin: -8px auto 26px auto;
+    text-align:center;
+    color:#444;
+    font-size:0.98em;
+    line-height:1.5;
+  }
 
-.person-photo {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center center;
-  display: block;
-  margin: 0 auto 14px auto;
-  background: #f2f2f2;
-}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:26px;
+    align-items:stretch;
+  }
 
-.person-photo.small {
-  width: 140px;
-  height: 140px;
-}
+  .card{
+    background:var(--card-bg);
+    border-radius:16px;
+    padding:22px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.06);
+  }
 
-.name {
-  font-weight: bold;
-  color: #8b0f1a;
-  margin-top: 8px;
-}
+  /* ALL people photos: circle + centred crop */
+  .person-photo{
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    object-fit:cover;
+    object-position:center center;
+    display:block;
+    margin:0 auto 14px auto;
+    background:#f2f2f2;
+  }
 
-.expertise {
-  font-size: 0.9em;
-  margin-top: 6px;
-}
+  .person-photo.small{
+    width:130px;
+    height:130px;
+  }
 
-ul {
-  max-width: 800px;
-  margin: auto;
-  font-size: 0.95em;
-  line-height: 1.7;
-}
+  /* 🔧 Per-photo crop tuning (for your 1,2,3) */
+  .crop-1{ object-position: 62% 35%; } /* Shamin: shift right + slightly down */
+  .crop-2{ object-position: 58% 28%; } /* Noraida: shift right + slightly up */
+  .crop-3{ object-position: 50% 20%; } /* Makmor: shift up */
+
+  .name{
+    font-weight:700;
+    color:var(--rapid-red);
+    margin-top:6px;
+  }
+
+  .expertise{
+    font-size:0.9em;
+    margin-top:8px;
+    line-height:1.45;
+  }
+
+  .list-wrap{
+    max-width:900px;
+    margin:0 auto;
+  }
+
+  ul{
+    margin:0;
+    padding-left:18px;
+    line-height:1.75;
+  }
+
+  .divider{
+    height:1px;
+    background:#e9e9e9;
+    margin:40px auto;
+    max-width:900px;
+  }
 </style>
 </head>
 
@@ -102,11 +137,11 @@ ul {
 
 <section>
   <h2>Core Researchers</h2>
+
   <div class="grid">
-    
     <div class="card">
-      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxOTk5Mg==" target="_blank">
-        <img src="shamin.jpg" class="person-photo">
+      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxOTk5Mg==" target="_blank" rel="noopener">
+        <img src="shamin.jpg" alt="Shamin Mohd Saffian" class="person-photo crop-1">
       </a>
       <div class="name">Shamin Mohd Saffian</div>
       <div class="expertise">
@@ -115,25 +150,30 @@ ul {
     </div>
 
     <div class="card">
-      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAyMTk5OQ==" target="_blank">
-        <img src="asyikin.jpg" class="person-photo">
+      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAyMTk5OQ==" target="_blank" rel="noopener">
+        <img src="asyikin.jpg" alt="Nor Asyikin Mohd Tahir" class="person-photo">
       </a>
       <div class="name">Nor Asyikin Mohd Tahir</div>
       <div class="expertise">
         Pharmacometrics • Pharmacogenetics • Antibiotics • Translational assay research
       </div>
     </div>
-
   </div>
 </section>
 
 <section>
   <h2>Affiliated Researchers</h2>
-  <div class="grid">
 
+  <!-- ✅ Restored copy writing -->
+  <div class="subtext">
+    These researchers contribute to RAPID projects through collaborative work in pharmacokinetics,
+    pharmacometrics, pharmacogenetics, and translational research.
+  </div>
+
+  <div class="grid">
     <div class="card">
-      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMjc2OA==" target="_blank">
-        <img src="noraida.jpg" class="person-photo small">
+      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMjc2OA==" target="_blank" rel="noopener">
+        <img src="noraida.jpg" alt="Dr Noraida Mohamed Shah" class="person-photo small crop-2">
       </a>
       <div class="name">Dr Noraida Mohamed Shah</div>
       <div class="expertise">
@@ -142,8 +182,8 @@ ul {
     </div>
 
     <div class="card">
-      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMzc4Mw==" target="_blank">
-        <img src="adyani.jpg" class="person-photo small">
+      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMzc4Mw==" target="_blank" rel="noopener">
+        <img src="adyani.jpg" alt="Dr Adyani Md Redzuan" class="person-photo small">
       </a>
       <div class="name">Dr Adyani Md Redzuan</div>
       <div class="expertise">
@@ -152,8 +192,8 @@ ul {
     </div>
 
     <div class="card">
-      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMDE4Mg==" target="_blank">
-        <img src="makmor.jpg" class="person-photo small">
+      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxMDE4Mg==" target="_blank" rel="noopener">
+        <img src="makmor.jpg" alt="Prof. Dr Mohd Makmor Bakry" class="person-photo small crop-3">
       </a>
       <div class="name">Prof. Dr Mohd Makmor Bakry</div>
       <div class="expertise">
@@ -162,43 +202,67 @@ ul {
     </div>
 
     <div class="card">
-      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxNzA3Nw==" target="_blank">
-        <img src="farida.jpg" class="person-photo small">
+      <a href="https://ukmsarjana.ukm.my/main/lihat_profil/SzAxNzA3Nw==" target="_blank" rel="noopener">
+        <img src="farida.jpg" alt="Dr Farida Hanim binti Islahudin" class="person-photo small">
       </a>
-      <div class="name">Dr Farida Hanim Islahudin</div>
+      <div class="name">Dr Farida Hanim binti Islahudin</div>
       <div class="expertise">
         Clinical pharmacy practice • Pharmacogenetics • Nephrology • Infectious disease
       </div>
     </div>
-
   </div>
 </section>
 
 <section>
   <h2>Current Research Students</h2>
-  <ul>
-    <li><b>Toh Chin Chiang</b> – Amikacin population PK in PICU</li>
-    <li><b>Tuan Fauziah Tuan Roslli</b> – HDMTX population PK in lymphoma</li>
-    <li><b>Farah Aida A. Zairol Azwan</b> – Allopurinol and oxypurinol PK/PD</li>
-    <li><b>Nazatul Adhwa Mohd Rozi</b> – Piperacillin population PK in CRRT</li>
-  </ul>
+  <div class="list-wrap">
+    <ul>
+      <li><b>Toh Chin Chiang</b> – Amikacin population PK in PICU</li>
+      <li><b>Tuan Fauziah Tuan Roslli</b> – HDMTX population PK in lymphoma</li>
+      <li><b>Farah Aida binti A. Zairol Azwan</b> – Allopurinol and oxypurinol PK/PD</li>
+      <li><b>Nazatul Adhwa binti Mohd Rozi</b> – Piperacillin population PK in CRRT</li>
+    </ul>
+  </div>
 </section>
 
 <section>
-  <h2>Past & Supervised Clinical Students (Selected Publications)</h2>
-  <ul>
-    <li>
-      <b>Fann Zi Yin (2025)</b> – Treatment outcomes in MRSA bacteraemia receiving vancomycin.  
-      <i>EJHP</i>. DOI: 10.1136/ejhpharm-2025-004716
-    </li>
-    <li>
-      <b>Farah Waheeda Tajurudin (2024)</b> – Analysis of DOAC prescriptions in AF patients two years post-discharge.
-    </li>
-    <li>
-      <b>Ahmad Salihin Abdullah (2021)</b> – Bleeding and thromboembolic events in NVAF treated with apixaban or rivaroxaban.  
-      <i>Malays J Med Sci</i>. https://doi.org/10.21315/mjms2022.29.2.15
-    </li>
-  </ul>
+  <h2>Past Students (Completed)</h2>
+  <div class="subtext">
+    Alumni who completed Master/PhD work connected to RAPID projects.
+  </div>
+
+  <div class="list-wrap">
+    <ul>
+      <!-- You will send me the list, I’ll format nicely -->
+      <li><i>Waiting for your list of completed Master/PhD students + year + title.</i></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Supervised Work (Selected)</h2>
+  <div class="subtext">
+    Student projects supervised by RAPID members (clinical / applied research).
+  </div>
+
+  <div class="list-wrap">
+    <ul>
+      <li>
+        <b>Fann Zi Yin (2025)</b> – Treatment outcomes in methicillin-resistant <i>Staphylococcus aureus</i> bacteraemia patients receiving vancomycin:
+        a retrospective study at a tertiary hospital. <i>EJHP</i>.
+        DOI: <a href="https://doi.org/10.1136/ejhpharm-2025-004716" target="_blank" rel="noopener">10.1136/ejhpharm-2025-004716</a>
+      </li>
+      <li>
+        <b>Farah Waheeda Tajurudin (2024)</b> – Analysis of direct oral anticoagulant (DOAC) prescriptions in atrial fibrillation patients
+        two years post-discharge from DOAC clinic.
+      </li>
+      <li>
+        <b>Ahmad Salihin Abdullah (2021)</b> – Bleeding and thromboembolic events in patients with non-valvular atrial fibrillation treated
+        with apixaban or rivaroxaban in a single tertiary teaching hospital.
+        <a href="https://doi.org/10.21315/mjms2022.29.2.15" target="_blank" rel="noopener">https://doi.org/10.21315/mjms2022.29.2.15</a>
+      </li>
+    </ul>
+  </div>
 </section>
 
 </body>
