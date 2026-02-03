@@ -1,8 +1,211 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Activities & Projects - RAPID</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Internal styles for immediate consistency */
+    
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 0;
+      background: #fafafa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    .site-header {
+      background: #8A0F1A;
+      color: white;
+      padding: 14px 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-link { display: inline-block; }
+
+    .logo {
+      height: 54px;
+      width: auto;
+      background: white;
+      border-radius: 8px;
+      padding: 4px;
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-text p {
+      margin: 4px 0 0 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    /* NAVIGATION */
+    .nav {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .nav a:hover { text-decoration: underline; }
+
+    /* LAYOUT */
+    section {
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: #8A0F1A;
+      margin-top: 0;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #eee; /* Adds a nice divider */
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* JOURNAL CLUB (Feature Section) */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid #eee;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .feature-img img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* PROJECT LIST PANELS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .panel {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #eee;
+      border-left: 5px solid #8A0F1A; /* Maroon Accent */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .panel h3 {
+      margin-top: 0;
+      color: #8A0F1A;
+      font-size: 1.2rem;
+    }
+
+    .panel ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .panel li {
+      margin-bottom: 10px;
+    }
+
+    /* TABLE STYLES */
+    .table-container {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border: 1px solid #eee;
+      
+      /* MAGIC MOBILE SCROLLING */
+      overflow-x: auto; 
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px; /* Forces table to keep shape on mobile (user scrolls) */
+    }
+
+    th {
+      background: #8A0F1A;
+      color: white;
+      text-align: left;
+      padding: 12px 15px;
+      font-size: 0.95rem;
+    }
+
+    td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #eee;
+      font-size: 0.9rem;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) { background-color: #fcfcfc; }
+    tr:hover { background-color: #f1f1f1; }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(138, 15, 26, 0.1);
+      color: #8A0F1A;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 30px;
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+
+    /* MOBILE RESPONSIVENESS */
+    @media (max-width: 900px) {
+      /* Stack Journal Club */
+      .feature-grid { grid-template-columns: 1fr; gap: 20px; }
+      .feature-img { order: -1; } /* Puts image on top on mobile */
+
+      /* Stack Project Lists */
+      .project-grid { grid-template-columns: 1fr; }
+      
+      /* Adjust Header text */
+      .brand-text h1 { font-size: 22px; }
+      
+      section { padding: 30px 15px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -27,12 +230,10 @@
   </nav>
 </header>
 
-<!-- Journal Club FIRST -->
 <section>
   <h2>Journal Club</h2>
-
-  <div class="two-col">
-    <div>
+  <div class="feature-grid">
+    <div class="feature-text">
       <p>
         RAPID runs a <strong>monthly journal club</strong> focused on pharmacokinetics,
         pharmacometrics, clinical pharmacology, and precision dosing.
@@ -41,71 +242,78 @@
         Sessions involve critical appraisal of recent papers, discussion of modelling methods,
         and sharing of ongoing project ideas.
       </p>
-      <p class="small">
-        Open to RAPID members and collaborators.
+      <p style="font-size: 0.9rem; color: #666; margin-top: 15px;">
+        <em>Open to RAPID members and collaborators.</em>
       </p>
     </div>
-
-    <div class="panel">
-      <img src="jc.jpg" alt="RAPID Journal Club" class="responsive-img">
+    <div class="feature-img">
+      
+      <img src="jc.jpg" alt="RAPID Journal Club Meeting">
     </div>
   </div>
 </section>
 
 <section>
-  <h2>Current PhD Projects (Pharmacometrics)</h2>
-  <ul>
-    <li><strong>Tuan Fauziah Tuan Roslli</strong> – High-dose methotrexate (HDMTX) population PK in lymphoma</li>
-    <li><strong>Toh Chin Chiang</strong> – Amikacin population PK in paediatric ICU (PICU)</li>
-    <li><strong>Farah Aida A. Zairol Azwan</strong> – Allopurinol and oxypurinol dose–response relationship</li>
-    <li><strong>Nazatul Adhwa Mohd Rozi</strong> – Piperacillin population PK in CRRT patients</li>
-  </ul>
+  <div class="project-grid">
+    <div class="panel">
+      <h3>Current PhD Projects (Pharmacometrics)</h3>
+      <ul>
+        <li><strong>Tuan Fauziah Tuan Roslli</strong> – High-dose methotrexate (HDMTX) population PK in lymphoma</li>
+        <li><strong>Toh Chin Chiang</strong> – Amikacin population PK in paediatric ICU (PICU)</li>
+        <li><strong>Farah Aida A. Zairol Azwan</strong> – Allopurinol and oxypurinol dose–response relationship</li>
+        <li><strong>Nazatul Adhwa Mohd Rozi</strong> – Piperacillin population PK in CRRT patients</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Past Student Projects (Clinical PK / Dosing)</h3>
+      <ul>
+        <li><strong>Ng Jia Wei</strong> – Dabigatran concentration variability in Malaysian population</li>
+        <li><strong>Christian Andrew Almalbis</strong> – Peak and trough concentrations of apixaban and rivaroxaban in clinical practice</li>
+        <li><strong>Lee Jian Lynn</strong> – Evaluation of Immunoglobulin Therapy and Population Pharmacokinetic model development</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <section>
-  <h2> Past Student Projects (Clinical PK / Dosing)</h2>
-  <ul>
-    <li><strong>Ng Jia Wei</strong> – Dabigatran concentration variability in Malaysian population</li>
-    <li><strong>Christian Andrew Almalbis</strong> – Peak and trough concentrations of apixaban and rivaroxaban in clinical practice</li>
-    <li><strong>Lee Jian Lynn</strong> – Evaluation of Immunoglobulin Therapy and Population Pharmacokinetic model development</li>
-  </ul>
-</section>
+  <div class="project-grid">
+    <div class="panel">
+      <h3>Collaborative Projects</h3>
+      <ul>
+        <li>A novel Metaheuristic algorithm for optimal experimental design (University Utara Malaysia)</li>
+        <li>Peg-asparaginase pharmacokinetics in ALL patients (University of Qatar)</li>
+        <li>Amikacin population PK in PICU (Ghent University, Belgium)</li>
+      </ul>
+    </div>
 
-<section>
-  <h2>Collaborative Projects</h2>
-  <ul>
-    <li>A novel Metaheuristic algorithm for optimal experimental design (University Utara Malaysia)</li>
-    <li>Peg-asparaginase pharmacokinetics in ALL patients (University of Qatar)</li>
-    <li>Amikacin population PK in PICU (Ghent University, Belgium)</li>
-  </ul>
+    <div class="panel">
+      <h3>Past Projects</h3>
+      <ul>
+        <li>Moxifloxacin and levofloxacin pharmacokinetics in vitreous and aqueous humor</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <section>
   <h2>Conference Presentations</h2>
-
-  <div class="table-wrap">
-    <table id="confTable" style="table-layout:auto;">
+  <div class="table-container">
+    <table id="confTable">
       <thead>
         <tr>
-          <th style="width: 90px;">Year</th>
+          <th style="width: 80px;">Year</th>
           <th style="width: 180px;">Presenter</th>
-          <th style="width: 260px;">Conference</th>
-          <th style="width: 190px;">Location</th>
+          <th style="width: 250px;">Conference</th>
+          <th style="width: 150px;">Location</th>
           <th>Title</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td colspan="5" class="small">Loading…</td></tr>
+        <tr><td colspan="5" style="text-align:center; padding:20px;">Loading data...</td></tr>
       </tbody>
     </table>
   </div>
-</section>
-
-<section>
-  <h2>Past Projects</h2>
-  <ul>
-    <li>Moxifloxacin and levofloxacin pharmacokinetics in vitreous and aqueous humor</li>
-  </ul>
 </section>
 
 <footer>
@@ -137,26 +345,35 @@ function badge(year) {
 }
 
 (async () => {
-  const rows = await loadCSV("conferences.csv");
-  const data = rows.slice(1);
+  try {
+    const rows = await loadCSV("conferences.csv");
+    const data = rows.slice(1);
 
-  // newest → oldest
-  data.sort((a, b) => Number(b[0]) - Number(a[0]));
+    // newest → oldest
+    data.sort((a, b) => Number(b[0]) - Number(a[0]));
 
-  const tbody = document.querySelector("#confTable tbody");
-  tbody.innerHTML = "";
+    const tbody = document.querySelector("#confTable tbody");
+    tbody.innerHTML = "";
 
-  for (const r of data) {
-    const [Year, Presenter, Conference, Location, Title] = r;
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${badge(Year)}</td>
-      <td>${Presenter}</td>
-      <td>${Conference}</td>
-      <td>${Location}</td>
-      <td>${Title}</td>
-    `;
-    tbody.appendChild(tr);
+    for (const r of data) {
+      // Safety check to ensure row has enough columns
+      if(r.length < 5) continue;
+      
+      const [Year, Presenter, Conference, Location, Title] = r;
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${badge(Year)}</td>
+        <td><strong>${Presenter}</strong></td>
+        <td>${Conference}</td>
+        <td>${Location}</td>
+        <td>${Title}</td>
+      `;
+      tbody.appendChild(tr);
+    }
+  } catch (error) {
+    console.error("Error loading CSV:", error);
+    document.querySelector("#confTable tbody").innerHTML = 
+      `<tr><td colspan="5" style="text-align:center; color:red;">Error loading conference data. Please check 'conferences.csv'.</td></tr>`;
   }
 })();
 </script>
