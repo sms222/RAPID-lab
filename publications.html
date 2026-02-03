@@ -1,8 +1,167 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Publications - RAPID</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Internal styles for consistency */
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 0;
+      background: #fafafa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    .site-header {
+      background: #8A0F1A;
+      color: white;
+      padding: 14px 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-link { display: inline-block; }
+
+    .logo {
+      height: 54px;
+      width: auto;
+      background: white;
+      border-radius: 8px;
+      padding: 4px;
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-text p {
+      margin: 4px 0 0 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    /* NAV */
+    .nav {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .nav a:hover { text-decoration: underline; }
+
+    /* LAYOUT */
+    section {
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: #8A0F1A;
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+
+    p { max-width: 800px; }
+
+    /* TABLE STYLES */
+    .table-container {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+      margin-top: 30px;
+      overflow-x: auto; /* Enables swipe scrolling on mobile */
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px; /* Prevents squishing */
+    }
+
+    th {
+      background: #8A0F1A;
+      color: white;
+      text-align: left;
+      padding: 14px;
+      font-size: 0.95rem;
+    }
+
+    td {
+      padding: 14px;
+      border-bottom: 1px solid #eee;
+      font-size: 0.95rem;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) { background-color: #fcfcfc; }
+    tr:hover { background-color: #f1f1f1; }
+
+    /* DOI BUTTON */
+    .doi-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      background-color: white;
+      border: 1px solid #8A0F1A;
+      color: #8A0F1A;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .doi-btn:hover {
+      background-color: #8A0F1A;
+      color: white;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #eee;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 30px;
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .brand-text h1 { font-size: 22px; }
+      section { padding: 30px 15px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -34,17 +193,21 @@
     pharmacometrics, pharmacogenetics, and model-informed precision dosing.
   </p>
 
-  <table id="pubTable">
-    <thead>
-      <tr>
-        <th style="width:80px;">Year</th>
-        <th>Title</th>
-        <th style="width:220px;">Journal</th>
-        <th style="width:100px;">Link</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <div class="table-container">
+    <table id="pubTable">
+      <thead>
+        <tr>
+          <th style="width:80px;">Year</th>
+          <th>Title</th>
+          <th style="width:200px;">Journal</th>
+          <th style="width:80px;">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="4" style="text-align:center; padding:20px;">Loading publications...</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <footer>
@@ -52,24 +215,59 @@
 </footer>
 
 <script>
-fetch("publications.csv")
-  .then(res => res.text())
-  .then(text => {
-    const rows = text.trim().split("\n").slice(1);
-    const tbody = document.querySelector("#pubTable tbody");
+// Improved CSV Parser (handles commas inside titles correctly)
+async function loadCSV(path) {
+  const res = await fetch(path);
+  const text = await res.text();
+  const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
 
-    rows.forEach(r => {
-      const [year,title,journal,link] = r.split(",");
+  return lines.map(line => {
+    const out = [];
+    let cur = "", inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === '"') inQ = !inQ;
+      else if (ch === ',' && !inQ) { out.push(cur); cur = ""; }
+      else cur += ch;
+    }
+    out.push(cur);
+    return out.map(s => s.replace(/^"|"$/g, "").trim());
+  });
+}
+
+(async () => {
+  try {
+    const rows = await loadCSV("publications.csv");
+    const data = rows.slice(1); // skip header
+    
+    // Sort by year descending (Newest first)
+    data.sort((a, b) => Number(b[0]) - Number(a[0]));
+
+    const tbody = document.querySelector("#pubTable tbody");
+    tbody.innerHTML = "";
+
+    data.forEach(r => {
+      // Ensure row has enough data
+      if (r.length < 2) return;
+
+      const [year, title, journal, link] = r;
+      
       const tr = document.createElement("tr");
       tr.innerHTML = `
-        <td>${year}</td>
-        <td>${title}</td>
-        <td>${journal}</td>
-        <td>${link ? `<a href="${link}" target="_blank">DOI</a>` : ""}</td>
+        <td><span class="badge">${year}</span></td>
+        <td style="font-weight:600; color:#222;">${title}</td>
+        <td style="color:#666; font-style:italic;">${journal || ""}</td>
+        <td>
+          ${link ? `<a href="${link}" class="doi-btn" target="_blank">View</a>` : ""}
+        </td>
       `;
       tbody.appendChild(tr);
     });
-  });
+  } catch (err) {
+    console.error(err);
+    document.querySelector("tbody").innerHTML = `<tr><td colspan="4">Error loading publications.</td></tr>`;
+  }
+})();
 </script>
 
 </body>
