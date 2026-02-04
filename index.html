@@ -3,12 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RAPID Research Group</title>
+  
+  <title>RAPID Research Group | Pharmacometrics & PKPD Malaysia | UKM</title>
+  
+  <meta name="description" content="The RAPID research group at UKM specialises in Pharmacometrics, Population Pharmacokinetics (PopPK), PKPD modelling, and Precision Dosing. Led by Dr Shamin Mohd Saffian." />
+  
+  <meta name="keywords" content="Pharmacometrics, PKPD, Population Pharmacokinetics, PopPK, Individualised Dosing, TDM, Clinical Pharmacology, UKM, Malaysia" />
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Internal styles to guarantee layout works immediately */
-    
-    /* Clean, modern default font */
+    /* Internal styles for immediate consistency */
     body {
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
       margin: 0;
@@ -87,7 +90,7 @@
       color: #555;
     }
 
-    /* HERO SECTION SPECIFIC */
+    /* HERO SECTION */
     .hero {
       text-align: center;
       background: white;
@@ -109,7 +112,7 @@
     /* CARD GRID SYSTEM */
     .cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 Columns on Desktop */
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 24px;
     }
@@ -121,7 +124,7 @@
       border: 1px solid #eee;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       transition: transform 0.2s ease;
-      height: 100%; /* Makes cards equal height */
+      height: 100%;
       box-sizing: border-box;
     }
 
@@ -164,14 +167,9 @@
 
     /* MOBILE RESPONSIVENESS */
     @media (max-width: 900px) {
-      /* Stack Grid to 1 column */
       .cards { grid-template-columns: 1fr; }
-      
-      /* Adjust font sizes */
       .brand-text h1 { font-size: 22px; }
       .hero h2 { font-size: 1.8rem; }
-      
-      /* Adjust spacing */
       section { padding: 30px 18px; }
     }
   </style>
@@ -305,6 +303,30 @@
 <footer>
   Centre for Quality Management of Medicines, Faculty of Pharmacy UKM
 </footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ResearchOrganization",
+  "name": "RAPID Research Group",
+  "alternateName": "Research in Applied Pharmacokinetics and Individualised Dosing",
+  "parentOrganization": {
+    "@type": "CollegeOrUniversity",
+    "name": "Universiti Kebangsaan Malaysia (UKM)",
+    "url": "https://www.ukm.my"
+  },
+  "knowsAbout": ["Pharmacometrics", "Pharmacokinetics", "PKPD", "Precision Dosing", "Pharmacy"],
+  "location": {
+    "@type": "Place",
+    "name": "Faculty of Pharmacy, UKM",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kuala Lumpur",
+      "addressCountry": "Malaysia"
+    }
+  }
+}
+</script>
 
 </body>
 </html>
